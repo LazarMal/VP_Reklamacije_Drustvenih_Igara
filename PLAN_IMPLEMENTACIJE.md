@@ -1,7 +1,7 @@
-# IMPLEMENTATION_PLAN — Status implementacije
+# PLAN IMPLEMENTACIJE — Status implementacije
 
 **Projekat:** Evidentiranje reklamacija društvenih igara
-**Referenca:** [PROJECT_SPEC.md](PROJECT_SPEC.md), [REQUIREMENTS.md](REQUIREMENTS.md), [ADAPTATION_PLAN.md](ADAPTATION_PLAN.md)
+**Referenca:** [SPECIFIKACIJA_PROJEKTA.md](SPECIFIKACIJA_PROJEKTA.md), [ZAHTEVI.md](ZAHTEVI.md), [PLAN_ADAPTACIJE.md](PLAN_ADAPTACIJE.md)
 
 ---
 
@@ -184,8 +184,8 @@
 
 | Stavka | Status |
 |--------|--------|
-| Provera svih zahteva iz PROJECT_SPEC | ⏳ |
-| Ažuriranje REQUIREMENTS statusa | ✅ |
+| Provera svih zahteva iz SPECIFIKACIJA_PROJEKTA | ⏳ |
+| Ažuriranje ZAHTEVI statusa | ✅ |
 
 ---
 

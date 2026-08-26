@@ -1,7 +1,7 @@
-# REQUIREMENTS — Pregled trenutnog stanja
+# ZAHTEVI — Pregled trenutnog stanja
 
 **Projekat:** Evidentiranje reklamacija društvenih igara (VP 2025/26)
-**Referenca:** [PROJECT_SPEC.md](PROJECT_SPEC.md)
+**Referenca:** [SPECIFIKACIJA_PROJEKTA.md](SPECIFIKACIJA_PROJEKTA.md)
 **Baza:** `reklamacije_drustvenih_igara_vp_2026`
 
 **Statusi:** `IMPLEMENTED` | `VERIFIED` | `MISSING`

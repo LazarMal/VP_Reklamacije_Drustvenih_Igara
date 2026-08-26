@@ -1,7 +1,7 @@
-# ADAPTATION_PLAN — Arhitektura i status projekta
+# PLAN ADAPTACIJE — Arhitektura i status projekta
 
 **Projekat:** Evidentiranje reklamacija društvenih igara
-**Referenca:** [PROJECT_SPEC.md](PROJECT_SPEC.md), [REQUIREMENTS.md](REQUIREMENTS.md)
+**Referenca:** [SPECIFIKACIJA_PROJEKTA.md](SPECIFIKACIJA_PROJEKTA.md), [ZAHTEVI.md](ZAHTEVI.md)
 
 ---
 

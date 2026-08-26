@@ -1,4 +1,4 @@
-# PROJECT_SPEC — Evidentiranje reklamacija društvenih igara (VP 2025/26)
+# SPECIFIKACIJA PROJEKTA — Evidentiranje reklamacija društvenih igara (VP 2025/26)
 
 **Student:** Lazar Malešev, SI 44/22
 **Poslovni proces:** Evidentiranje reklamacija neispravnih društvenih igara dobavljaču
