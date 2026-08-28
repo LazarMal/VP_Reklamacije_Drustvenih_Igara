@@ -111,12 +111,13 @@ $datumEvidentiranja = date('Y-m-d');
 <table id="stavkeTabela" style="width:90%; margin-left:auto; margin-right:auto;" bgcolor="#B7F0F7" align="center" cellspacing="0" cellpadding="5" border="1">
 
 <tr>
-<td colspan="6" align="left">
+<td colspan="7" align="left">
 <b>STAVKE REKLAMACIJE</b>
 </td>
 </tr>
 
 <tr>
+<td><b>Stavka</b></td>
 <td><b>Društvena igra</b></td>
 <td><b>Količina</b></td>
 <td><b>Cena po komadu</b></td>
@@ -126,6 +127,7 @@ $datumEvidentiranja = date('Y-m-d');
 </tr>
 
 <tr class="stavkaRed">
+<td class="stavkaBroj" align="center">1</td>
 <td>
 <select name="sifraIgre[]" class="igraSelect" required style="width:200px;">
 <?php echo $optionsDrustveneIgre; ?>
@@ -160,7 +162,7 @@ $datumEvidentiranja = date('Y-m-d');
 <table style="width:90%;" align="center">
 <tr>
 <td align="center">
-<button type="button" onclick="dodajStavku()">DODAJ JOS JEDNU STAVKU</button>
+<button type="button" onclick="dodajStavku()">DODAJ NOVU STAVKU REKLAMACIJE</button>
 <br/><br/>
 <input type="submit" value="SACUVAJ REKLAMACIJU">
 </td>
@@ -236,6 +238,16 @@ function izracunajUkupno(red) {
     }
 }
 
+function renumerisiStavke() {
+    let redovi = document.querySelectorAll(".stavkaRed");
+    for (let i = 0; i < redovi.length; i++) {
+        let brojCelija = redovi[i].querySelector(".stavkaBroj");
+        if (brojCelija) {
+            brojCelija.textContent = (i + 1);
+        }
+    }
+}
+
 function dodajStavku() {
     let tabela = document.getElementById("stavkeTabela");
 
@@ -243,6 +255,7 @@ function dodajStavku() {
     noviRed.className = "stavkaRed";
 
     noviRed.innerHTML = `
+        <td class="stavkaBroj" align="center"></td>
         <td>
             <select name="sifraIgre[]" class="igraSelect" required style="width:200px;">
                 ${optionsIgre}
@@ -267,6 +280,7 @@ function dodajStavku() {
 
     tabela.appendChild(noviRed);
     postaviDogadjajeZaRed(noviRed);
+    renumerisiStavke();
 }
 
 function obrisiStavku(dugme) {
@@ -278,6 +292,7 @@ function obrisiStavku(dugme) {
     }
 
     dugme.closest("tr").remove();
+    renumerisiStavke();
 }
 
 function proveriReklamaciju() {
@@ -384,6 +399,7 @@ document.getElementById("brojReklamacije").addEventListener("blur", proveriBrojR
 
 let prviRed = document.querySelector(".stavkaRed");
 postaviDogadjajeZaRed(prviRed);
+renumerisiStavke();
 </script>
 
 </body>

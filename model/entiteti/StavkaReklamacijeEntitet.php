@@ -15,10 +15,26 @@ class StavkaReklamacijeEntitet
     {
         $this->IDStavkeReklamacije = $IDStavkeReklamacije;
         $this->IDReklamacije = $IDReklamacije;
-        $this->DrustvenaIgra = $DrustvenaIgra;
+        if ($DrustvenaIgra instanceof DrustvenaIgraEntitet) {
+            $this->PostaviDrustvenuIgru($DrustvenaIgra);
+        } else {
+            $this->DrustvenaIgra = $DrustvenaIgra;
+        }
         $this->Kolicina = $Kolicina;
         $this->Cena = $Cena;
         $this->RazlogReklamacije = $RazlogReklamacije;
+    }
+
+    public function PostaviDrustvenuIgru($DrustvenaIgra)
+    {
+        if ($DrustvenaIgra instanceof DrustvenaIgraEntitet) {
+            $this->DrustvenaIgra = $DrustvenaIgra;
+        }
+    }
+
+    public function DajDrustvenuIgru()
+    {
+        return $this->DrustvenaIgra;
     }
 
     public function DajUkupno()
