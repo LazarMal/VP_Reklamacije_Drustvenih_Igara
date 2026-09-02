@@ -4,14 +4,14 @@ require_once __DIR__ . '/../../tehnoloskeKlase/BaznaTabela.php';
 require_once __DIR__ . '/../../repozitorijumi/DBKategorijaIgre.php';
 require_once __DIR__ . '/../../repozitorijumi/DBDrustvenaIgra.php';
 require_once __DIR__ . '/../../repozitorijumi/DBDrustvenaIgraV.php';
-require_once __DIR__ . '/../../model/servisi/DrustvenaIgraModel.php';
+require_once __DIR__ . '/../../repozitorijumi/DrustvenaIgraRepozitorijum.php';
 
 class DrustveneIgreController
 {
     private $KonekcijaObject;
     private $konekcija;
     private $baza;
-    private $DrustvenaIgraModel;
+    private $DrustvenaIgraRepozitorijum;
 
     public function __construct()
     {
@@ -19,7 +19,7 @@ class DrustveneIgreController
         $this->KonekcijaObject->connect();
         $this->konekcija = $this->KonekcijaObject->konekcijaDB;
         $this->baza = $this->KonekcijaObject->KompletanNazivBazePodataka;
-        $this->DrustvenaIgraModel = new DrustvenaIgraModel($this->konekcija, $this->baza);
+        $this->DrustvenaIgraRepozitorijum = new DrustvenaIgraRepozitorijum($this->konekcija, $this->baza);
     }
 
     public function DajKategorijeIgre()
@@ -55,7 +55,7 @@ class DrustveneIgreController
 
     public function SnimiNovuDrustvenuIgru($sifraIgre, $naziv, $proizvodjac, $oznakaKategorije, $nazivFajlaSlike)
     {
-        return $this->DrustvenaIgraModel->SnimiNovuDrustvenuIgru(
+        return $this->DrustvenaIgraRepozitorijum->SnimiNovuDrustvenuIgru(
             $this->KonekcijaObject,
             $sifraIgre,
             $naziv,
@@ -67,7 +67,7 @@ class DrustveneIgreController
 
     public function SnimiNovuDrustvenuIgruSP($sifraIgre, $naziv, $proizvodjac, $oznakaKategorije, $nazivFajlaSlike)
     {
-        return $this->DrustvenaIgraModel->SnimiNovuDrustvenuIgruSP(
+        return $this->DrustvenaIgraRepozitorijum->SnimiNovuDrustvenuIgruSP(
             $this->KonekcijaObject,
             $sifraIgre,
             $naziv,
@@ -79,7 +79,7 @@ class DrustveneIgreController
 
     public function IzmeniDrustvenuIgru($staraSifra, $sifraIgre, $naziv, $proizvodjac, $oznakaKategorije, $nazivFajlaSlike)
     {
-        return $this->DrustvenaIgraModel->IzmeniDrustvenuIgru(
+        return $this->DrustvenaIgraRepozitorijum->IzmeniDrustvenuIgru(
             $this->KonekcijaObject,
             $staraSifra,
             $sifraIgre,
@@ -92,12 +92,12 @@ class DrustveneIgreController
 
     public function ObrisiDrustvenuIgru($sifraIgre)
     {
-        return $this->DrustvenaIgraModel->ObrisiDrustvenuIgru($this->KonekcijaObject, $sifraIgre);
+        return $this->DrustvenaIgraRepozitorijum->ObrisiDrustvenuIgru($this->KonekcijaObject, $sifraIgre);
     }
 
     public function PostojiSifraIgre($sifraIgre)
     {
-        return $this->DrustvenaIgraModel->PostojiSifraIgre($sifraIgre);
+        return $this->DrustvenaIgraRepozitorijum->PostojiSifraIgre($sifraIgre);
     }
 
     public function ZatvoriKonekciju()

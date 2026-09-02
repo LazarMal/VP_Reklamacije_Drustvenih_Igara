@@ -1,16 +1,16 @@
 <?php
 
 require_once __DIR__ . '/../../tehnoloskeKlase/BaznaKonekcija.php';
-require_once __DIR__ . "/../../model/servisi/ReklamacijaModel.php";
-require_once __DIR__ . "/../../model/servisi/DrustvenaIgraModel.php";
+require_once __DIR__ . "/../../repozitorijumi/ReklamacijaRepozitorijum.php";
+require_once __DIR__ . "/../../repozitorijumi/DrustvenaIgraRepozitorijum.php";
 
 class ReklamacijeController
 {
     private $KonekcijaObject;
     private $konekcija;
     private $baza;
-    private $ReklamacijaModel;
-    private $DrustvenaIgraModel;
+    private $ReklamacijaRepozitorijum;
+    private $DrustvenaIgraRepozitorijum;
 
     public function __construct()
     {
@@ -20,73 +20,73 @@ class ReklamacijeController
         $this->konekcija = $this->KonekcijaObject->konekcijaDB;
         $this->baza = $this->KonekcijaObject->KompletanNazivBazePodataka;
 
-        $this->ReklamacijaModel = new ReklamacijaModel($this->konekcija, $this->baza);
-        $this->DrustvenaIgraModel = new DrustvenaIgraModel($this->konekcija, $this->baza);
+        $this->ReklamacijaRepozitorijum = new ReklamacijaRepozitorijum($this->konekcija, $this->baza);
+        $this->DrustvenaIgraRepozitorijum = new DrustvenaIgraRepozitorijum($this->konekcija, $this->baza);
     }
 
     public function DajSveReklamacije()
     {
-        return $this->ReklamacijaModel->DajSveReklamacije();
+        return $this->ReklamacijaRepozitorijum->DajSveReklamacije();
     }
 
     public function DajReklamacijePoFilteru($brojReklamacije, $datumReklamacije, $dobavljac)
     {
-        return $this->ReklamacijaModel->DajReklamacijePoFilteru($brojReklamacije, $datumReklamacije, $dobavljac);
+        return $this->ReklamacijaRepozitorijum->DajReklamacijePoFilteru($brojReklamacije, $datumReklamacije, $dobavljac);
     }
 
     public function DajReklamacijuPoID($IDReklamacije)
     {
-        return $this->ReklamacijaModel->DajReklamacijuPoID($IDReklamacije);
+        return $this->ReklamacijaRepozitorijum->DajReklamacijuPoID($IDReklamacije);
     }
 
     public function DajReklamacijuPoBrojuReklamacije($brojReklamacije)
     {
-        return $this->ReklamacijaModel->DajReklamacijuPoBrojuReklamacije($brojReklamacije);
+        return $this->ReklamacijaRepozitorijum->DajReklamacijuPoBrojuReklamacije($brojReklamacije);
     }
 
     public function DajStavkeReklamacije($IDReklamacije)
     {
-        return $this->ReklamacijaModel->DajStavkeReklamacije($IDReklamacije);
+        return $this->ReklamacijaRepozitorijum->DajStavkeReklamacije($IDReklamacije);
     }
 
     public function DajDrustveneIgreZaReklamaciju()
     {
-        return $this->DrustvenaIgraModel->DajSveDrustveneIgreZaReklamaciju();
+        return $this->DrustvenaIgraRepozitorijum->DajSveDrustveneIgreZaReklamaciju();
     }
 
     public function DajReklamacijeSaStavkama($rezultatReklamacije)
     {
-        return $this->ReklamacijaModel->DajReklamacijeSaStavkama($rezultatReklamacije);
+        return $this->ReklamacijaRepozitorijum->DajReklamacijeSaStavkama($rezultatReklamacije);
     }
 
-    public function DajReklamacijaModel()
+    public function DajReklamacijaRepozitorijum()
     {
-        return $this->ReklamacijaModel;
+        return $this->ReklamacijaRepozitorijum;
     }
 
     public function IgraPostojiUKatalogu($sifraIgre)
     {
-        return $this->ReklamacijaModel->IgraPostojiUKatalogu($sifraIgre);
+        return $this->ReklamacijaRepozitorijum->IgraPostojiUKatalogu($sifraIgre);
     }
 
     public function PostojiBrojReklamacije($brojReklamacije)
     {
-        return $this->ReklamacijaModel->PostojiBrojReklamacije($this->KonekcijaObject, $brojReklamacije);
+        return $this->ReklamacijaRepozitorijum->PostojiBrojReklamacije($this->KonekcijaObject, $brojReklamacije);
     }
 
     public function PostojiBrojReklamacijeOsim($brojReklamacije, $IDReklamacije)
     {
-        return $this->ReklamacijaModel->PostojiBrojReklamacijeOsim($this->KonekcijaObject, $brojReklamacije, $IDReklamacije);
+        return $this->ReklamacijaRepozitorijum->PostojiBrojReklamacijeOsim($this->KonekcijaObject, $brojReklamacije, $IDReklamacije);
     }
 
     public function SnimiNovuReklamaciju($reklamacijaEntitet)
     {
-        return $this->ReklamacijaModel->SnimiNovuReklamaciju($this->KonekcijaObject, $reklamacijaEntitet);
+        return $this->ReklamacijaRepozitorijum->SnimiNovuReklamaciju($this->KonekcijaObject, $reklamacijaEntitet);
     }
 
     public function IzmeniReklamaciju($IDReklamacije, $brojReklamacije, $datumReklamacije, $dobavljac, $napomena, $stavkeZaSnimanje)
     {
-        return $this->ReklamacijaModel->IzmeniReklamaciju(
+        return $this->ReklamacijaRepozitorijum->IzmeniReklamaciju(
             $this->KonekcijaObject,
             $IDReklamacije,
             $brojReklamacije,
@@ -99,12 +99,12 @@ class ReklamacijeController
 
     public function ObrisiReklamaciju($IDReklamacije)
     {
-        return $this->ReklamacijaModel->ObrisiReklamaciju($this->KonekcijaObject, $IDReklamacije);
+        return $this->ReklamacijaRepozitorijum->ObrisiReklamaciju($this->KonekcijaObject, $IDReklamacije);
     }
 
     public function StavkaPripadaReklamaciji($IDStavkeReklamacije, $IDReklamacije)
     {
-        return $this->ReklamacijaModel->StavkaPripadaReklamaciji($IDStavkeReklamacije, $IDReklamacije);
+        return $this->ReklamacijaRepozitorijum->StavkaPripadaReklamaciji($IDStavkeReklamacije, $IDReklamacije);
     }
 
     public function DajKonekcijaObject()

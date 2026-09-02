@@ -1,11 +1,11 @@
 <?php
 
-require_once __DIR__ . '/../../tehnoloskeKlase/BaznaTransakcija.php';
-require_once __DIR__ . '/../../repozitorijumi/DBDrustvenaIgra.php';
-require_once __DIR__ . '/../../repozitorijumi/DBDrustvenaIgraSP.php';
-require_once __DIR__ . '/../../repozitorijumi/DBKategorijaIgre.php';
+require_once __DIR__ . '/../tehnoloskeKlase/BaznaTransakcija.php';
+require_once __DIR__ . '/DBDrustvenaIgra.php';
+require_once __DIR__ . '/DBDrustvenaIgraSP.php';
+require_once __DIR__ . '/DBKategorijaIgre.php';
 
-class DrustvenaIgraModel
+class DrustvenaIgraRepozitorijum
 {
     private $konekcija;
     private $baza;

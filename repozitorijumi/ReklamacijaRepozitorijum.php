@@ -1,10 +1,10 @@
 <?php
 
-require_once __DIR__ . '/../../repozitorijumi/DBReklamacija.php';
-require_once __DIR__ . '/../../repozitorijumi/DBStavkaReklamacije.php';
-require_once __DIR__ . '/DrustvenaIgraModel.php';
+require_once __DIR__ . '/DBReklamacija.php';
+require_once __DIR__ . '/DBStavkaReklamacije.php';
+require_once __DIR__ . '/DrustvenaIgraRepozitorijum.php';
 
-class ReklamacijaModel
+class ReklamacijaRepozitorijum
 {
     private $konekcija;
     private $baza;
@@ -85,14 +85,14 @@ class ReklamacijaModel
 
     public function IgraPostojiUKatalogu($sifraIgre)
     {
-        $drustvenaIgraModel = new DrustvenaIgraModel($this->konekcija, $this->baza);
+        $drustvenaIgraRepozitorijum = new DrustvenaIgraRepozitorijum($this->konekcija, $this->baza);
 
-        return $drustvenaIgraModel->IgraPostoji($sifraIgre);
+        return $drustvenaIgraRepozitorijum->IgraPostoji($sifraIgre);
     }
 
     public function PostojiBrojReklamacije($konekcijaObject, $brojReklamacije)
     {
-        require_once __DIR__ . '/../../repozitorijumi/DBReklamacija.php';
+        require_once __DIR__ . '/DBReklamacija.php';
 
         $repo = new DBReklamacija($konekcijaObject, "reklamacija");
 
@@ -101,7 +101,7 @@ class ReklamacijaModel
 
     public function PostojiBrojReklamacijeOsim($konekcijaObject, $brojReklamacije, $IDReklamacije)
     {
-        require_once __DIR__ . '/../../repozitorijumi/DBReklamacija.php';
+        require_once __DIR__ . '/DBReklamacija.php';
 
         $repo = new DBReklamacija($konekcijaObject, "reklamacija");
 
@@ -110,9 +110,9 @@ class ReklamacijaModel
 
     public function SnimiNovuReklamaciju($konekcijaObject, $reklamacijaEntitet)
     {
-        require_once __DIR__ . '/../../tehnoloskeKlase/BaznaTransakcija.php';
-        require_once __DIR__ . '/../../repozitorijumi/DBReklamacija.php';
-        require_once __DIR__ . '/../../repozitorijumi/DBStavkaReklamacije.php';
+        require_once __DIR__ . '/../tehnoloskeKlase/BaznaTransakcija.php';
+        require_once __DIR__ . '/DBReklamacija.php';
+        require_once __DIR__ . '/DBStavkaReklamacije.php';
 
         $konekcija = $konekcijaObject->konekcijaDB;
 
@@ -166,9 +166,9 @@ class ReklamacijaModel
 
     public function IzmeniReklamaciju($konekcijaObject, $IDReklamacije, $brojReklamacije, $datumReklamacije, $dobavljac, $napomena, $stavkeZaSnimanje)
     {
-        require_once __DIR__ . '/../../tehnoloskeKlase/BaznaTransakcija.php';
-        require_once __DIR__ . '/../../repozitorijumi/DBReklamacija.php';
-        require_once __DIR__ . '/../../repozitorijumi/DBStavkaReklamacije.php';
+        require_once __DIR__ . '/../tehnoloskeKlase/BaznaTransakcija.php';
+        require_once __DIR__ . '/DBReklamacija.php';
+        require_once __DIR__ . '/DBStavkaReklamacije.php';
 
         $konekcija = $konekcijaObject->konekcijaDB;
 
@@ -243,7 +243,7 @@ class ReklamacijaModel
 
     public function ObrisiReklamaciju($konekcijaObject, $IDReklamacije)
     {
-        require_once __DIR__ . '/../../repozitorijumi/DBReklamacija.php';
+        require_once __DIR__ . '/DBReklamacija.php';
 
         $konekcija = $konekcijaObject->konekcijaDB;
         $IDReklamacijeEsc = mysqli_real_escape_string($konekcija, $IDReklamacije);
